@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker DevOps Lab</title>
+</head>
+
+<body>
+
+<h1>Docker DevOps Production Lab</h1>
+
+<p id="status">Checking backend...</p>
+
+<script>
+fetch("/api/health")
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("status").innerText =
+            "Backend: " + data.status +
+            " | Database: " + data.database;
+    })
+    .catch(() => {
+        document.getElementById("status").innerText =
+            "Backend unavailable";
+    });
+</script>
+
+</body>
+</html>
